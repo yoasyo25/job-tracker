@@ -1,5 +1,8 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div align="center">
+  All Jobs for <strong><%= @company.name %></strong>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+  <% @company.jobs.each do |job| %>
+  <p><%= job.title %></p>
+  <% end %>
+  <p><%= link_to "Companies Index", companies_path %></p>
+</div>

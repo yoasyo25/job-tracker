@@ -17,12 +17,28 @@ describe Job do
         job = Job.new(title: "Developer", description: "Wahoo", level_of_interest: 80)
         expect(job).to be_invalid
       end
+
+      it "is invalid without a company" do
+        job = Job.new(title: "Developer", description: "Wahoo",
+                      level_of_interest: 80, city: "Denver")
+        expect(job).to be_invalid
+      end
+
+      it "is invalid without a category" do
+        company = Company.new(name: "Turing")
+        job = Job.new(title: "Developer", description: "Wahoo",
+                      level_of_interest: 80, city: "Denver",
+                      company_id: company)
+        expect(job).to be_invalid
+      end
     end
 
     context "valid attributes" do
-      it "is valid with a title, level of interest, and company" do
+      it "is valid with a title, level of interest, company, and category" do
+        category = Category.new(id: 1, title: "Tech")
         company = Company.new(name: "Turing")
-        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver", company: company)
+        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver",
+                      company: company, category_id: category.id)
         expect(job).to be_valid
       end
     end
@@ -32,6 +48,11 @@ describe Job do
     it "belongs to a company" do
       job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
       expect(job).to respond_to(:company)
+    end
+
+    it "belongs to a category" do
+      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
+      expect(job).to respond_to(:category)
     end
   end
 end

@@ -1,0 +1,11 @@
+<div align="center">
+  <h2><%= @category.title %></h2>
+
+  <% if @category.jobs  %>
+    <% @category.jobs.each do |job| %>
+    <p> <%= job.title %></p>
+    <% end %>
+  <% end %>
+
+  <p><%= link_to "Companies Index", companies_path %></p>
+</div>

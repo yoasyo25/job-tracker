@@ -1,3 +1,8 @@
-<h2>Create a new job at <%= @company.name %> here!</h2>
 
-<%= render partial: "form" %>
+<div align="center">
+  <h2>Create a new job at <%= @company.name %> here!</h2>
+
+  <p><%= render partial: "form" %></p>
+
+  <p><%= link_to "Create a new category for this job", new_category_path %></p>
+</div>

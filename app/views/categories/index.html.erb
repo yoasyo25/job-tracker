@@ -1,0 +1,12 @@
+<div align="center">
+  <h1>All Categories</h1>
+
+  <% @categories.each do |category| %>
+    <p><%= link_to category.title, category_path(category) %></p>
+    <p class=category_<%= category.id %>>
+      <%= link_to "Delete", category_path(category), method: :delete %></p>
+      <%= link_to "Edit", edit_category_path(category) %></p>
+  <% end %>
+  <p><%= link_to "Companies Index", companies_path %></p>
+  <p><%= link_to "Create a New Category", new_category_path %></p>
+</div>
