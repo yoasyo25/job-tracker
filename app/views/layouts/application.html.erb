@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>JobTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
-  <% end %>
-<%= yield %>
+  <head>
+    <title>JobTracker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <h3 class="text-muted">Job Tracker</h3>
+
+        <%= render "shared/navbar" %>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: name %>
+        <% end %>
+
+      <%= yield %>
+
+      </div>
+    </div>
+  </div>
+
+  </body>
 </html>

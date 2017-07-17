@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-   root 'companies#index'
+  devise_for :users
+  root 'companies#index'
 
   resources :companies do
     resources :contacts, only: [:create, :show]
@@ -13,5 +14,5 @@ end
   get '/jobs' => 'jobs#sort'
   get '/dashboard' => 'jobs#dashboard'
   get '/search' => 'jobs#search'
-
+  get '/home' => 'jobs#home'
 end

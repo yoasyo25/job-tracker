@@ -1,4 +1,11 @@
 class JobsController < ApplicationController
+
+  def home
+    @companies = Company.all
+    @jobs = Job.all
+    @category = Category.all
+  end
+
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
