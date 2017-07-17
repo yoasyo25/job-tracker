@@ -1,0 +1,11 @@
+<div>
+  <h3>Post a Comment</h3>
+
+  <%= form_for [ @company, @job, @comment ] do |f| %>
+    <%= render partial: "shared/errors", locals: { target: @comment } %>
+
+      <%= f.text_area :content %><br/>
+
+      <%= f.submit %>
+<% end %>
+</div>

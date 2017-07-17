@@ -1,0 +1,51 @@
+<div align="center">
+  <hr>
+  <h4>Top Companies by Interest</h4>
+  <hr>
+  <table>
+    <tr>
+      <th>Company</th>
+      <th>Level of Interest</th>
+    </tr>
+    <tr>
+      <% @top_companies_by_interest.each do |company, interest| %>
+      <td><%= company %></td>
+      <td><%= interest.keys.join %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <hr>
+  <h3>Jobs Dashboard</h3>
+  <hr>
+
+  <h4>Top Companies by Level of Interest</h4>
+  <table>
+    <tr>
+      <th>Level of Interest</th>
+      <th>Number of Jobs</th>
+    </tr>
+    <tr>
+      <% @jobs_by_level_of_interest.each do |interest, count| %>
+      <td><%= interest %></td>
+      <td><%= count %></td>
+    </tr>
+    <% end %>
+  </table>
+
+  <hr>
+  <h4>Number of Jobs by Location</h4>
+  <hr>
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Number of Jobs</th>
+    </tr>
+    <tr>
+      <% @job_locations.each do |location, count| %>
+      <td><%= link_to "#{location}", jobs_path(location: location) %></td>
+      <td><%= count %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

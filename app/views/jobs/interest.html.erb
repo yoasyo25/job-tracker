@@ -1,0 +1,18 @@
+<div align="center">
+  <h3>Jobs by Level of Interest</h3>
+  <hr>
+
+  <table>
+    <tr>
+      <th>Level of Interest</th>
+      <th>Job</th>
+    </tr>
+    <% @jobs_by_interest.each do |job| %>
+    <tr>
+      <td><%= job.level_of_interest %></td>
+      <td><%= link_to "#{job.title} as #{job.company.name}", company_job_path(job.company.id, job) %></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

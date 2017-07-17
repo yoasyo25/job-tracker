@@ -2,6 +2,8 @@ class JobsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+    @contact = Contact.new
+    @contact.company_id = @company.id
   end
 
   def new
@@ -9,6 +11,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job = Job.new()
   end
+
 
   def create
     @category = Category.all
@@ -25,7 +28,9 @@ class JobsController < ApplicationController
 
   def show
     @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
+    @job     = Job.find(params[:id])
+    @comment = Comment.new
+    @comment.job_id = @job.id
   end
 
   def edit
@@ -45,6 +50,7 @@ class JobsController < ApplicationController
     end
   end
 
+
   def destroy
     @company = Company.find(params[:company_id])
     @job = @company.jobs.find(params[:id])
@@ -55,10 +61,40 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path
   end
 
+  def sort
+    if params[:sort]    == 'location'
+      @jobs_by_location  = Job.order(:city)
+      render :location
+    elsif params[:sort] == 'interest'
+      @jobs_by_interest  = Job.jobs_by_level_of_interest.flatten
+      render :interest
+    elsif params[:sort] == 'company'
+      @jobs_by_company   = Job.order(:company_id)
+      render :company
+    elsif params[:location]
+      @jobs_in_city      = Job.jobs_for_a_city(params[:location])
+      render :city
+    end
+  end
+
+
+    def search
+      if params[:search]
+        @jobs = Job.where(params[:search])
+      end
+    end
+
+    def dashboard
+      @jobs_by_level_of_interest = Job.count_of_jobs_by_level_of_interest
+      @top_companies_by_interest = Company.interest_in_companies_by_descending_order
+      @job_locations = Job.count_of_jobs_by_city
+    end
+
   private
 
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city,
                                 :category_id)
   end
+
 end

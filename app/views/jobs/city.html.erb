@@ -1,0 +1,7 @@
+<div align="center">
+  <h3>Jobs in <%= @jobs_in_city.first.city %></h3>
+  <hr>
+  <% @jobs_in_city.each do |job| %>
+  <p><%= link_to "#{job.title} at #{job.company.name}", company_job_path(job.company.id, job) %></p>
+  <% end %>
+</div>

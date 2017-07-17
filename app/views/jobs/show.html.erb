@@ -15,5 +15,14 @@
   <br>
 
   Company: <%= link_to @job.company.name, company_path(@job.company) %>
+  <br>
+
+  <h3>Comments (<%= @job.comments.size %>)</h3>
+</h3>
+  <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+
+  <br>
+  <%= render partial: 'comments/form' %>
+
   <p><%= link_to "Companies Index", companies_path %></p>
 </div>

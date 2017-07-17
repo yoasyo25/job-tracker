@@ -14,3 +14,22 @@ describe "User sees one company" do
     expect(page).to have_content("Developer")
   end
 end
+
+describe "User sees a form to enter contact information on company page" do
+  scenario "user can see contact information form and input data" do
+    company = Company.create!(name: "ESPN")
+
+    visit company_path(company)
+
+    fill_in "contact[full_name]", with: "Penelope Santorini"
+    fill_in "contact[position]", with: "Hiring Manager"
+    fill_in "contact[email]", with: "psantorini@example.com"
+
+    click_button "Create Contact"
+
+    expect(current_path).to eq("/companies/#{company.id}/jobs")
+    expect(page).to have_content("Penelope Santorini")
+    expect(page).to have_content("Hiring Manager")
+    expect(page).to have_content("psantorini@example.com")
+  end
+end
