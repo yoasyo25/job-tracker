@@ -58,3 +58,4 @@ gem 'devise', '~> 4.3'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'petergate', '~> 1.7', '>= 1.7.5'
 ruby '2.4.0'
+gem 'rails_12factor', group: :production
