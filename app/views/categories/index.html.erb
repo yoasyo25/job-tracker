@@ -7,10 +7,12 @@
       <div class="col-md-4">
         <p class=category_<%= category.id %>>
         <h4><%= link_to category.title, category_path(category) %></h4>
-        <p><%= link_to "Edit", edit_category_path(category), class: "btn btn-primary btn-sm" if logged_in?(:site_admin) %> |
-        <%= link_to "Delete", category_path(category), class: "btn btn-danger btn-sm",
-            method: :delete if logged_in?(:site_admin) %></p>
-          </div>
+        <% if logged_in?(:site_admin) %>
+          <p><%= link_to "Edit", edit_category_path(category), class: "btn btn-primary btn-sm" %> |
+          <%= link_to "Delete", category_path(category), class: "btn btn-danger btn-sm",
+              method: :delete %></p>
+              <% end %>
+            </div>
       <% end %>
   </div>
 </div>

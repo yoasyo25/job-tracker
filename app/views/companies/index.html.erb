@@ -7,10 +7,12 @@
       <div class="col-md-4">
         <p class=company_<%= company.id %>></p>
             <h4><%= link_to company.name, company_path(company) %></h4>
+            <% if  logged_in?(:site_admin) %>
             <p><%= link_to "Edit", edit_company_path(company),
-              class: "btn btn-primary btn-sm" if logged_in?(:site_admin) %> |
+              class: "btn btn-primary btn-sm"  %> |
               <%= link_to "Delete", company_path(company), method: "delete",
-              class: "btn btn-danger btn-sm" if logged_in?(:site_admin) %></p>
+              class: "btn btn-danger btn-sm"  %></p>
+            <% end  %>
       </div>
         <% end %>
     </div>

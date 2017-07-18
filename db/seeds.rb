@@ -25,3 +25,6 @@ JOBS.each do |work|
                          city: CITIES.sample, category_id: category.id)
     puts "  Created #{job.title}"
 end
+
+User.create(name: "Admin User", email: "example@example.com", password: "asdfasdf",
+            password_confirmation: "asdfasdf", roles: "admin_user")
