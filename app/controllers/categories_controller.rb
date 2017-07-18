@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  access all: [:show, :index], user: {except: [:destroy, :edit, :update]}, site_admin: :all
+
 
   def index
     @categories = Category.all

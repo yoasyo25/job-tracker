@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  access all: [:show, :index, :home, :dashboard], user: {except: [:destroy, :edit, :update]}, site_admin: :all
 
   def home
     @companies = Company.all

@@ -1,12 +1,16 @@
-<div align="center">
-  <h1>All Categories</h1>
-
-  <% @categories.each do |category| %>
-    <p><%= link_to category.title, category_path(category) %></p>
-    <p class=category_<%= category.id %>>
-      <%= link_to "Delete", category_path(category), method: :delete %></p>
-      <%= link_to "Edit", edit_category_path(category) %></p>
-  <% end %>
-  <p><%= link_to "Companies Index", companies_path %></p>
+  <h1 align="center">All Categories</h1>
   <p><%= link_to "Create a New Category", new_category_path %></p>
+
+  <div class="container">
+    <div class="row">
+      <% @categories.each do |category| %>
+      <div class="col-md-4">
+        <p class=category_<%= category.id %>>
+        <h4><%= link_to category.title, category_path(category) %></h4>
+        <p><%= link_to "Edit", edit_category_path(category), class: "btn btn-primary btn-sm" if logged_in?(:site_admin) %> |
+        <%= link_to "Delete", category_path(category), class: "btn btn-danger btn-sm",
+            method: :delete if logged_in?(:site_admin) %></p>
+          </div>
+      <% end %>
+  </div>
 </div>

@@ -4,9 +4,9 @@
 
   <% @jobs.each do |job| %>
   <p><%= link_to job.title, company_job_path(@company, job) %> at <%= job.company.name %></p>
-  <p class=job_<%= job.id %>><%= link_to "Delete", company_job_path(@company, job), method: "delete" %></p>
+  <p class=job_<%= job.id %>><%= link_to "Delete", company_job_path(@company, job),
+                  method: "delete" if logged_in?(:site_admin) %></p>
   <% end %>
-  <p><%= link_to "Companies Index", companies_path %></p>
 
   <h3>Contact Information</h3>
   <%= render partial: 'companies/contact', collection: @company.contacts.reverse %>

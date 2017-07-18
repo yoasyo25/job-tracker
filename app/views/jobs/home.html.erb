@@ -1,4 +1,8 @@
-<h4>Hi, <%= current_user.first_name if current_user %></h4>
+<% if current_user %>
+  <h4>Hi, <%= current_user.first_name %></h4>
+  <% else %>
+  <h4>Hi, Guest</h4>
+  <% end  %>
 
 <div class="jumbotron">
   <h1>Find Your Dream Job!</h1>
@@ -10,12 +14,18 @@
 <div class="row">
   <div class="col-lg-6">
     <h2>Companies</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p>This is the best place to start your job search.
+      There are millions of companies registered on this site who are looking
+      for great talent, such as yourself. Browse this section to see which jobs
+      are a best fit for you. Contact the hiring managers at the company of your choice.</p>
     <p><%= link_to "View details", companies_path, class: "btn btn-primary" %></p>
   </div>
 
   <div class="col-lg-6">
     <h2>Job Categories</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><%= link_to "View details", categories_path, class: "btn btn-primary" %></p>
+    <p>Narrow your job searche by specific parameters such as location,
+      job title, industry and more. Job categories are updated regularily
+      and allow you to quickly find thousands of listing that best fit your
+      job search.</p>
+  <p><%= link_to "View details", categories_path, class: "btn btn-primary" %></p>
   </div>
