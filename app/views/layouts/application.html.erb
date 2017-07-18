@@ -12,24 +12,20 @@
   <body>
     <div class="container">
       <div class="masthead">
-        <h3 class="text-muted">Job Tracker</h3>
+        <h3><%= link_to "Job Tracker", dashboard_path, class: "text-muted"  %></h3>
 
         <%= render "shared/navbar" %>
 
         <!-- <p class="notice"><%= notice %></p> -->
         <!-- <p class="alert"><%= alert %></p> -->
-        <% if current_user %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else  %>
-          <%= link_to "Register", new_user_registration_path %>
-          <%= link_to "Login", new_user_session_path %>
-        <% end  %>
 
         <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, class: name %>
         <% end %>
 
       <%= yield %>
+
+      <%= render "shared/footer" %>
 
       </div>
     </div>

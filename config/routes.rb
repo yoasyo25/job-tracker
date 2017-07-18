@@ -4,7 +4,7 @@ Rails.application.routes.draw do
                                           sign_in: "login", sign_out: "logout",
                                           sign_up: "register"
                                         }
-  root 'companies#index'
+  root 'jobs#home'
 
   resources :companies do
     resources :contacts, only: [:create, :show]

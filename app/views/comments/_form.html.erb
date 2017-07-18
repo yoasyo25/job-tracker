@@ -1,11 +1,10 @@
 <div>
-  <h3>Post a Comment</h3>
+  <h4>Post a Comment</h4>
+      <%= form_for [ @company, @job, @comment ] do |f| %>
+      <%= render partial: "shared/errors", locals: { target: @comment } %>
 
-  <%= form_for [ @company, @job, @comment ] do |f| %>
-    <%= render partial: "shared/errors", locals: { target: @comment } %>
+      <p><%= f.text_field :content %></p>
 
-      <%= f.text_area :content %><br/>
-
-      <%= f.submit %>
-<% end %>
+      <%= f.submit class: "btn btn-md btn-primary"%>
+      <% end %>
 </div>

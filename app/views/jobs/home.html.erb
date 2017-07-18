@@ -1,29 +1,21 @@
+<h4>Hi, <%= current_user.first_name if current_user %></h4>
+
+<div class="jumbotron">
+  <h1>Find Your Dream Job!</h1>
+  <p class="lead">This sites allows you to keep track of job opportunities at top rated companies in Denver and beyond. You can browse or upload job opportunities, visit the dashboard for jobs with high demand, and connect with employeers at hundreds of companies.</p>
+  <p><%= link_to "View details", companies_path, class: "btn btn-lg btn-success" %></p>
+</div>
 
 
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Find Your Dream Job!</h1>
-        <p class="lead">This sites allows you to keep track of job opportunities at top rated companies in Denver and beyond. You can browse or upload job opportunities, visit the dashboard for jobs with high demand, and connect with employeers at hundreds of companies.</p>
-        <p><%= link_to "View details", companies_path, class: "btn btn-lg btn-success" %></p>
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Companies</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><%= link_to "View details", companies_path, class: "btn btn-primary" %></p>
+  </div>
 
-      </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-6">
-          <h2>Companies</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><%= link_to "View details", companies_path, class: "btn btn-primary" %></p>
-        </div>
-
-        <div class="col-lg-6">
-          <h2>Job Categories</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><%= link_to "View details", categories_path, class: "btn btn-primary" %></p>
-        </div>
-
-
-      <footer class="footer">
-        <p>&copy; Job Tracker 2017</p>
-      </footer>
-    </div>
+  <div class="col-lg-6">
+    <h2>Job Categories</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><%= link_to "View details", categories_path, class: "btn btn-primary" %></p>
+  </div>
